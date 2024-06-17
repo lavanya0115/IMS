@@ -25,7 +25,7 @@
             <div class="mt-4 w-full md:w-1/2 px-2">
                 <x-input-label for="uname" :value="__('User Name')" />
                 <x-text-input id="uname" class="block mt-1 w-full" type="text" name="uname" :value="old('uname')"
-                    required autofocus autocomplete="uname" />
+                    required autofocus autocomplete="uname"  />
                 <x-input-error :messages="$errors->get('uname')" class="mt-2" />
             </div>
 
@@ -50,7 +50,7 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4 ">
+        <div class="mt-4 w-full md:w-1/2 px-2 ">
             {{-- <div class="mt-4 w-full md:w-1/2 px-2"> --}}
             <x-input-label for="password" :value="__('Password')" />
 
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mt-4 w-full md:w-1/2 px-2">
             {{-- <div class="mt-4 w-full md:w-1/2 px-2"> --}}
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
