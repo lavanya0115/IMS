@@ -11,7 +11,7 @@ class ItemMaster extends Model
 
     protected $table = 'items';
 
-    protected $fillables=[
+    protected $fillable=[
         'name',
         'description',
         'price',

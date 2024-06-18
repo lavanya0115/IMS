@@ -36,7 +36,12 @@ class ItemMasterController extends Controller
             'quantity' => 'required|integer',
         ]);
 
-        $item = ItemMaster::create($request->all());
+        $item = ItemMaster::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+        ]);
 
         if ($item) {
             session()->flash('success', 'Item Created Successfully');
@@ -50,9 +55,9 @@ class ItemMasterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ItemMaster $items)
+    public function show(ItemMaster $item)
     {
-        return view('items.show', compact('items'));
+        return view('items.show', compact('item'));
     }
 
     /**
@@ -75,12 +80,17 @@ class ItemMasterController extends Controller
             'quantity' => 'required|integer',
         ]);
 
-        dd($request, $item);
-
-        $item->update($request->all());
-
-        return redirect()->route('items.index')
-            ->with('success', 'Item updated successfully.');
+        $item->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+        ]);
+        $is_updated = $item->wasChanged('name', 'description', 'price', 'quantity');
+        if ($is_updated) {
+            return redirect()->route('items.index')
+                ->with('success', 'Item updated successfully.');
+        }
     }
 
     /**
@@ -88,10 +98,12 @@ class ItemMasterController extends Controller
      */
     public function destroy(ItemMaster $item)
     {
-        dd($item);
-        $item->delete();
-
-        return redirect()->route('items.index')
-            ->with('success', 'Item deleted successfully.');
+        if (!empty($item->id)) {
+            $is_deleted = $item->delete();
+            if ($is_deleted) {
+                return redirect()->route('items.index')
+                    ->with('success', 'Item deleted successfully.');
+            }
+        }
     }
 }
