@@ -27,7 +27,7 @@
                     </ul>
                 </div>
             @endif
-            <table class="min-w-full bg-white shadow-md rounded my-6">
+            <table class="min-w-full bg-white shadow-md rounded my-6 text-center">
                 <thead>
                     <tr>
                         <th

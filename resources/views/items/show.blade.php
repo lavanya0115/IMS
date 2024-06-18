@@ -9,9 +9,7 @@
                     <p class="font-bold">Low Stock Alert</p>
                     <p>This item have low stock:</p>
                     <ul class="list-disc list-inside">
-
                         <li>{{ $lowStockItemAlert->name }} ({{ $lowStockItemAlert->quantity }} left)</li>
-
                     </ul>
                 </div>
             @endif
