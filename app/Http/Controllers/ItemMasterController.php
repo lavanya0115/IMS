@@ -13,7 +13,9 @@ class ItemMasterController extends Controller
     public function index()
     {
         $items = ItemMaster::all();
-        return view('items.index', compact('items'));
+        $lowStockItems = ItemMaster::where('quantity', '<', 10)->get();
+
+        return view('items.index', compact('items', 'lowStockItems'));
     }
 
     /**

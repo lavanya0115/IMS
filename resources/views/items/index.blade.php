@@ -16,12 +16,25 @@
             </div>
         @endif
         <div class="overflow-x-auto">
+            @if ($lowStockItems->isNotEmpty())
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
+                    <p class="font-bold">Low Stock Alert</p>
+                    <p>The following items have low stock:</p>
+                    <ul class="list-disc list-inside">
+                        @foreach ($lowStockItems as $item)
+                            <li>{{ $item->name }} ({{ $item->quantity }} left)</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <table class="min-w-full bg-white shadow-md rounded my-6">
                 <thead>
                     <tr>
-                        <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                        <th
+                            class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
                             Name</th>
-                        <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                        <th
+                            class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
                             Description</th>
                         <th
                             class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
