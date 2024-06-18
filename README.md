@@ -8,7 +8,9 @@ Guide for install and run the project
     -   Run the `composer install` and `npm install` command.
 -   [x] Create an empty database for our application
 -   [x] Copy the .evn.example file to .env and update the database configuration
-# for PostgreSQL connection  
+
+# for PostgreSQL connection
+
         # DB_CONNECTION=pgsql
         # DB_HOST=127.0.0.1
         # DB_PORT=5432
