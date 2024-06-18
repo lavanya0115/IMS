@@ -59,7 +59,8 @@ class ItemMasterController extends Controller
      */
     public function show(ItemMaster $item)
     {
-        return view('items.show', compact('item'));
+        $lowStockItemAlert = ItemMaster::where('id', $item->id)->where('quantity', '<', 10)->first();
+        return view('items.show', compact('item', 'lowStockItemAlert'));
     }
 
     /**

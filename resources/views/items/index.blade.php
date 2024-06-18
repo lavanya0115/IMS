@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 mt-5">
         <h1 class="text-2xl font-bold mb-4">Inventory Items</h1>
-        <div class="relative ...">
-            <a href="{{ route('items.create') }}"
-                class="absolute top-0 right-0 ... bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block">
-                Create New Item
-            </a>
-        </div>
+
+        <a href="{{ route('items.create') }}"
+            class="float- end bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
+            @include('icons.add')
+            <span class="ps-2"> Create New Item</span>
+        </a>
 
         @if ($message = Session::get('success'))
             <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2 mt-2">
@@ -17,7 +17,7 @@
         @endif
         <div class="overflow-x-auto">
             @if ($lowStockItems->isNotEmpty())
-                <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
+                <div class="mt-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
                     <p class="font-bold">Low Stock Alert</p>
                     <p>The following items have low stock:</p>
                     <ul class="list-disc list-inside">
