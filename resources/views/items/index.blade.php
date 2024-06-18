@@ -9,9 +9,6 @@
                 Create New Item
             </a>
         </div>
-        {{-- <div class="object-none object-right mb-4 "> --}}
-
-        {{-- </div> --}}
 
         @if ($message = Session::get('success'))
             <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2 mt-2">
@@ -45,12 +42,15 @@
                             <td class="py-2 px-4 border-b border-gray-300">{{ $item->price }}</td>
                             <td class="py-2 px-4 border-b border-gray-300">{{ $item->quantity }}</td>
                             <td class="py-2 px-4 border-b border-gray-300">
-                                <a href="{{ route('items.create', $item->id) }}"
-                                    class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded mr-2">@include('icons.add')</a>
+
                                 <a href="{{ route('items.edit', $item->id) }}"
-                                    class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded mr-2">@include('icons.edit')</a>
-                                    <a href="{{ route('items.show', $item->id) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">@include('icons.show')</a>
+                                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+                                    @include('icons.edit')
+                                </a>
+                                <a href="{{ route('items.show', $item->id) }}"
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+                                    @include('icons.show')
+                                </a>
                                 <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
