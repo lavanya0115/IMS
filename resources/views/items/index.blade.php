@@ -4,21 +4,21 @@
     <div class="container mx-auto px-4 mt-5">
         <h1 class="text-2xl font-bold mb-4">Inventory Items</h1>
         <div class="mt-2 mb-3">
-            {{-- @if (auth()->user()->hasRole('admin')) --}}
-            <a href="{{ route('items.create') }}"
-                class="float- end bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
-                @include('icons.add')
-                <span class="ps-2"> Create New Item</span>
-            </a>
-            {{-- @endif --}}
-            {{-- <div class="ps-4"> --}}
-            <a href="{{route('items.export') }}"
+            @if (auth()->user()->hasRole('admin'))
+                <a href="{{ route('items.create') }}"
+                    class="float- end bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
+                    @include('icons.add')
+                    <span class="ps-2"> Create New Item</span>
+                </a>
+            @endif
+
+            <a href="{{ route('items.export') }}"
                 class="me-2 float-end bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
                 @include('icons.uparrow')
                 <span class="ps-2">Export to Excel</span>
             </a>
-            {{-- </div>
-            <div> --}}
+
+            {{-- <div> --}}
             {{-- <a href="{{ route('items.create') }}"
                     class="me-3 float-end bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
                     @include('icons.file')
