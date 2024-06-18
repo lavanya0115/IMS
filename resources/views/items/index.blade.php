@@ -1,0 +1,72 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold mb-4">Inventory Items</h1>
+        <div class="relative ...">
+            <a href="{{ route('items.create') }}"
+                class="absolute top-0 right-0 ... bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block">
+                Create New Item
+            </a>
+        </div>
+        {{-- <div class="object-none object-right mb-4 "> --}}
+
+        {{-- </div> --}}
+
+        @if ($message = Session::get('success'))
+            <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2 mt-2">
+                {{ $message }}
+            </div>
+        @endif
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded my-6">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                            Name</th>
+                        <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                            Description</th>
+                        <th
+                            class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                            Price</th>
+                        <th
+                            class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                            Quantity</th>
+                        <th
+                            class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                            Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($items as $item)
+                        <tr class="hover:bg-gray-100">
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $item->name }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $item->description }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $item->price }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">{{ $item->quantity }}</td>
+                            <td class="py-2 px-4 border-b border-gray-300">
+                                <a href="{{ route('items.create', $item->id) }}"
+                                    class="bg-yellow-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded mr-2">@include('icons.add')</a>
+                                <a href="{{ route('items.edit', $item->id) }}"
+                                    class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded mr-2">@include('icons.edit')</a>
+                                    <a href="{{ route('items.show', $item->id) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">@include('icons.show')</a>
+                                <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">@include('icons.delete')</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr class="bg-gray-100">
+                            <td colspan="5" class="py-2 text-red-500 text-center text-lg px-4 border-b border-gray-300">
+                                No Items Found</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection
