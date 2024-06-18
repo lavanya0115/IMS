@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,33 +23,17 @@ class ProfileController extends Controller
         ]);
     }
 
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'date_of_birth' => ['required', 'date'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile_number' => ['required', 'string', 'max:15'],
-            'address' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:100'],
-            'city' => ['required', 'string', 'max:100'],
-            'pincode' => ['required', 'string', 'max:10'],
-            'user_name' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
     /**
      * Update the user's profile information.
      */
     public function update(Request $request): RedirectResponse
     {
+
         $validatedData = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'date_of_birth' => ['required', 'date','before:today'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'date_of_birth' => ['required', 'date', 'before:today'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->user()->id],
             'mobile_number' => ['required', 'string', 'max:15'],
             'address' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:100'],
@@ -66,7 +51,7 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
-
+        session()->flash('success', 'User details updated successfully');
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 

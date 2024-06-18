@@ -7,6 +7,7 @@
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Update your account's profile information and email address.") }}
         </p>
+
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -21,8 +22,8 @@
             <!-- First Name -->
             <div class="w-full md:w-1/4 px-2">
                 <x-input-label for="first_name" :value="__('First Name')" />
-                <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)"
-                    required autofocus autocomplete="first_name" />
+                <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
+                    :value="old('first_name', $user->first_name)" required autofocus autocomplete="first_name" />
                 <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
             </div>
 
@@ -45,8 +46,8 @@
             <!-- Date of Birth -->
             <div class="w-full md:w-1/4 px-2">
                 <x-input-label for="date_of_birth" :value="__('Date of Birth')" />
-                <x-text-input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 block w-full" :value="old('date_of_birth', $user->date_of_birth)"
-                    required autofocus autocomplete="bday" />
+                <x-text-input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 block w-full"
+                    :value="old('date_of_birth', $user->date_of_birth)" required autofocus autocomplete="bday" />
                 <x-input-error class="mt-2" :messages="$errors->get('date_of_birth')" />
             </div>
 

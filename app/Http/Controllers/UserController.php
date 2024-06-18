@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +50,8 @@ class UserController extends Controller
         ]);
 
         if ($user) {
+            $role = Role::where('name', 'admin')->first();
+            $user->roles()->attach($role);
             session()->flash('success', 'Item Created Successfully');
             return redirect()->route('users.index')
                 ->with('success', 'Item created successfully.');
