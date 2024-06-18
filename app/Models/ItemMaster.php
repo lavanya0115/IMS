@@ -9,10 +9,12 @@ class ItemMaster extends Model
 {
     use HasFactory;
 
+    protected $table = 'items';
+
     protected $fillables=[
         'name',
         'description',
         'price',
         'quantity',
-    ]
+    ];
 }
