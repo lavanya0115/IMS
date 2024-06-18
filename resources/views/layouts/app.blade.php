@@ -32,8 +32,11 @@
         <!-- Page Content -->
         <main>
 
+
             <div class="container">
-                {{ $slot }}
+                @if (isset($slot))
+                    {{ $slot }}
+                @endif
                 @yield('content')
             </div>
         </main>

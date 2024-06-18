@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ItemMaster;
+use App\Exports\ItemsExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ItemMasterController extends Controller
 {
@@ -108,5 +110,13 @@ class ItemMasterController extends Controller
                     ->with('success', 'Item deleted successfully.');
             }
         }
+    }
+
+    public function export()
+    {
+
+        // $items = ItemMaster::all();
+        // return (new ItemsExport($items))->download('items.xlsx');
+        return Excel::download(new ItemsExport, 'items.xlsx');
     }
 }
