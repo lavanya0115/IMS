@@ -20,7 +20,7 @@
 
         <div class="flex flex-wrap mx-2">
             <!-- First Name -->
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="first_name" :value="__('First Name')" />
                 <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
                     :value="old('first_name', $user->first_name)" required autofocus autocomplete="first_name" />
@@ -28,7 +28,7 @@
             </div>
 
             <!-- Last Name -->
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="last_name" :value="__('Last Name')" />
                 <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->last_name)"
                     required autofocus autocomplete="family-name" />
@@ -36,7 +36,7 @@
             </div>
 
             <!-- User Name -->
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="user_name" :value="__('User Name')" />
                 <x-text-input id="user_name" name="user_name" type="text" class="mt-1 block w-full" :value="old('user_name', $user->user_name)"
                     required autofocus autocomplete="username" />
@@ -44,7 +44,7 @@
             </div>
 
             <!-- Date of Birth -->
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="date_of_birth" :value="__('Date of Birth')" />
                 <x-text-input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 block w-full"
                     :value="old('date_of_birth', $user->date_of_birth)" required autofocus autocomplete="bday" />
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Mobile Number -->
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="mobile_number" :value="__('Mobile Number')" />
                 <x-text-input id="mobile_number" name="mobile_number" type="tel" class="mt-1 block w-full"
                     :value="old('mobile_number', $user->mobile_number)" required autofocus autocomplete="tel" maxlength="10" pattern="[0-9]{10}"
@@ -61,8 +61,8 @@
             </div>
         </div>
 
-        <div class="flex flex-wrap -mx-2">
-            <div class="w-full md:w-1/4 px-2">
+        <div class="flex flex-wrap mx-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="email" :value="__('Email')" />
                 <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
                     required autocomplete="username" />
@@ -87,25 +87,25 @@
                     </div>
                 @endif
             </div>
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="pincode" :value="__('Pincode')" />
                 <x-text-input id="pincode" name="pincode" type="text" class="mt-1 block w-full" :value="old('pincode', $user->pincode)"
                     required autofocus autocomplete="pincode" />
                 <x-input-error class="mt-2" :messages="$errors->get('pincode')" />
             </div>
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="state" :value="__('State')" />
                 <x-text-input id="state" name="state" type="text" class="mt-1 block w-full" :value="old('state', $user->state)"
                     required autofocus autocomplete="state" />
                 <x-input-error class="mt-2" :messages="$errors->get('state')" />
             </div>
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="city" :value="__('City')" />
                 <x-text-input id="city" name="city" type="text" class="mt-1 block w-full" :value="old('city', $user->city)"
                     required autofocus autocomplete="city" />
                 <x-input-error class="mt-2" :messages="$errors->get('city')" />
             </div>
-            <div class="w-full md:w-1/4 px-2">
+            <div class="w-full md:w-1/5 px-2">
                 <x-input-label for="address" :value="__('Address')" />
                 <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)"
                     required autofocus autocomplete="address" />
