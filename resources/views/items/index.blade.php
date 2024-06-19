@@ -4,13 +4,13 @@
     <div class="container mx-auto px-4 mt-5">
         <h1 class="text-2xl font-bold mb-4">Inventory Items</h1>
         <div class="mt-2 mb-3">
-            @if (auth()->user()->hasRole('admin'))
-                <a href="{{ route('items.create') }}"
-                    class="float- end bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
-                    @include('icons.add')
-                    <span class="ps-2"> Create New Item</span>
-                </a>
-            @endif
+            {{-- @if (auth()->user()->hasRole('admin')) --}}
+            <a href="{{ route('items.create') }}"
+                class="float- end bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
+                @include('icons.add')
+                <span class="ps-2"> Create New Item</span>
+            </a>
+            {{-- @endif --}}
 
             <a href="{{ route('items.export') }}"
                 class="me-2 float-end bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
@@ -19,7 +19,7 @@
             </a>
 
             {{-- <div> --}}
-            {{-- <a href="{{ route('items.create') }}"
+            {{-- <a href="#"
                     class="me-3 float-end bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded-full inline-flex items-center">
                     @include('icons.file')
                     <span class="ps-2">CSV</span>
@@ -58,40 +58,39 @@
                         <th
                             class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
                             Quantity</th>
-                        @if (auth()->user()->hasRole('admin'))
-                            <th
-                                class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
-                                Actions</th>
-                        @endif
+                        {{-- @if (auth()->user()->hasRole('admin')) --}}
+                        <th
+                            class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 border-b border-gray-300">
+                            Actions</th>
+                        {{-- @endif --}}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="items-table-body">
                     @forelse ($items as $item)
                         <tr class="hover:bg-gray-100">
                             <td class="py-2 px-4 border-b border-gray-300">{{ $item->name }}</td>
                             <td class="py-2 px-4 border-b border-gray-300">{{ $item->description }}</td>
                             <td class="py-2 px-4 border-b border-gray-300">{{ $item->price }}</td>
                             <td class="py-2 px-4 border-b border-gray-300">{{ $item->quantity }}</td>
-                            @if (auth()->user()->hasRole('admin'))
-                                <td class="py-2 px-4 border-b border-gray-300">
+                            {{-- @if (auth()->user()->hasRole('admin')) --}}
+                            <td class="py-2 px-4 border-b border-gray-300">
 
-                                    <a href="{{ route('items.edit', $item->id) }}"
-                                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded inline-flex items-center">
-                                        @include('icons.edit')
-                                    </a>
-                                    <a href="{{ route('items.show', $item->id) }}"
-                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded inline-flex items-center">
-                                        @include('icons.show')
-                                    </a>
-                                    <form action="{{ route('items.destroy', $item->id) }}" method="POST"
-                                        class="inline-block">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">@include('icons.delete')</button>
-                                    </form>
-                                </td>
-                            @endif
+                                <a href="{{ route('items.edit', $item->id) }}"
+                                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+                                    @include('icons.edit')
+                                </a>
+                                <a href="{{ route('items.show', $item->id) }}"
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded inline-flex items-center">
+                                    @include('icons.show')
+                                </a>
+                                <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">@include('icons.delete')</button>
+                                </form>
+                            </td>
+                            {{-- @endif --}}
                         </tr>
                     @empty
                         <tr class="bg-gray-100">
